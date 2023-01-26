@@ -8,6 +8,45 @@ namespace App;
 
 class Customer
 {
+    public function __construct(string $name, array $rentals)
+    {
+        $this->name = $name;
+        $this->rentals = $rentals;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function statement(): string {
+        return $this->generateStatement();
+    }
+
+    private function generateStatement(): string {
+        $totalAmount = 0.0;
+        $frequentRenterPoints = 0;
+        $result = "Rental Record for " . $this->getName() . "\n";
+        foreach ($this->rentals as $each){
+            $thisAmount = $each->calculateRentalAmount();
+            $frequentRenterPoints += $each->calculateFrequentRenterPoints();
+    
+            $result .= "\t" . $each->getTitle() . "\t"
+                . number_format($thisAmount, 1) . "\n";
+            $totalAmount += $thisAmount;
+        }
+    
+        $result .= "You owed " . number_format($totalAmount, 1)  . "\n";
+        $result .= "You earned " . $frequentRenterPoints . " frequent renter points\n";
+    
+        return $result;
+    }
+    
+    private string $name;
+    private array $rentals = [];
+}
+
+/* {
     public function __construct(String $name)
     {
         $this->name = $name;
@@ -31,7 +70,6 @@ class Customer
         foreach ($this->rentals as $each){
            $thisAmount = 0.0;
 
-           /* @var $each Rental */
            // determines the amount for each line
            switch($each->getMovie()->getPriceCode()) {
                case Movie::REGULAR:
@@ -70,4 +108,4 @@ class Customer
 
     private string $name;
     private array $rentals = [];
-}
+} */

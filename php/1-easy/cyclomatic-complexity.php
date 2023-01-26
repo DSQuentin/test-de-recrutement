@@ -1,6 +1,16 @@
 <?php
 
 function convertSize($bytes, $precision = 2) {
+    $units = array("B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB");
+    $index = 0;
+    while ($bytes >= 1024 && $index < count($units) - 1) {
+        $bytes /= 1024;
+        $index++;
+    }
+    return round($bytes, $precision) . " " . $units[$index];
+}
+
+/* function convertSize($bytes, $precision = 2) {
   $kilobytes = $bytes / 1024;
 
   if ($kilobytes < 1024) {
@@ -56,4 +66,8 @@ function convertSize($bytes, $precision = 2) {
   }
   
   return $bytes . ' B';
-}
+} */
+
+
+
+
