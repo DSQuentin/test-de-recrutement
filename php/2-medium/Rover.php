@@ -1,5 +1,17 @@
 <?php
 
+/* 
+Dans la méthode `receive()`, je remplace la série de if/else par un tableau associatif nommé `directions`.
+Ce tableau associe la direction du rover à un tableau contenant les deux directions possibles
+soit la gauche ou la droite.
+Je remplace aussi la série de if/else par un tableau associatif nommé `movement`
+ce qui permet d'associer la direction du rover à un tableau contenant les coordonnées
+sur les axes x et y.
+Enfin je remplace la dernière série de if/else qui détermine le déplacement
+du rover par un opérateur ternaire qui vérifie la direction actuelle du rover
+et multiplie la direction par 1 ou -1 selon la direction du rover.
+*/
+
 declare(strict_types=1);
 
 namespace App;

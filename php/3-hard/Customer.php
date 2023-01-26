@@ -1,5 +1,16 @@
 <?php
 
+/* 
+Pour refactoriser ce code, j'ai tout d'abord extrait le calcul du Rental présent dans la méthode
+statement de la class `Customer` dans une méthode séparé, nommé `calculateRentalAmount()`
+que j'ai placé dans la class `Movie` afin de le rendre plus lisible et modulable. 
+Puis j'ai refactorisé le switch en créant une méthode dans la class `Movie` qui calcule
+le Rental pour un film spécifique, méthode que j'appelle dans `calculateRentalAmount()`. 
+Enfin, la méthode qui retourn le titre d'un film peut être placée dans la class `Rental`
+afin que la class `Customer` n'ait pas de référence direct a un film.
+Ces modifications permettent de faciliter les changements ou ajouts à logique sans affecter le reste du code.
+*/
+
 declare(strict_types=1);
 
 

@@ -1,5 +1,11 @@
 <?php
-
+/* 
+Plutot que de faire une vérification pour chaque unité, on peut faire une boucle
+qui va vérifier si la valeur est supérieure à 1024, et si oui, on divise par 1024
+et on incrémente l'index de l'unité, et ce tant que la valeur est supérieure ou égale à 1024
+ou que l'index de l'unité est inférieur à la taille du tableau - 1.
+Puis on utilise round pour arrondire le résultat à la précision voulue.
+*/
 function convertSize($bytes, $precision = 2) {
     $units = array("B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB");
     $index = 0;
